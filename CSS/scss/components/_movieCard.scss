@@ -1,0 +1,172 @@
+@use '../abstracts/' as *;
+
+
+.card-container {
+    @include flex();
+
+    @include respond(350) {
+        animation: zoomIn .8s ease !important;
+    }
+
+    @include respond(650) {
+        @include card-animation(2,
+            (slideInLeft .8s ease, slideInRight .8s ease),
+            true);
+    }
+
+    @include respond(850) {
+        @include card-animation(3,
+            (slideInLeft 1s ease,
+                zoomIn .8s ease,
+                slideInRight 1s ease),
+            true);
+    }
+
+    @include respond(1200) {
+        @include card-animation(4,
+            (slideInLeft 1s ease,
+                zoomIn .8s ease,
+                zoomIn .8s ease,
+                slideInRight 1s ease),
+            true);
+    }
+
+    @include card-animation(4,
+        (slideInLeft 1s ease,
+            zoomIn .8s ease,
+            zoomIn .8s ease,
+            slideInRight 1s ease));
+
+    .card {
+        background: $surface;
+        color: $text;
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: .35s;
+
+
+        &:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba($primary, .25);
+        }
+
+        .card-body {
+            background: $surface;
+        }
+
+        .card-title {
+            color: $text;
+            font-weight: 700;
+        }
+
+        .card-text {
+            color: $secondary;
+
+            .description {
+                display: inline-block;
+                cursor: pointer;
+                color: $primary;
+                font-weight: 600;
+                transition: .3s;
+
+                &:hover {
+                    color: $hover;
+                }
+            }
+        }
+
+        .btn-primary {
+            width: 100%;
+            background: $primary;
+            border-color: $primary;
+
+            &:hover {
+                background: $hover;
+                border-color: $hover;
+            }
+        }
+
+        .poster {
+            position: relative;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                transition: .35s;
+            }
+
+            .genres {
+                position: absolute;
+                inset: 0;
+                border-radius: inherit;
+
+                @include flex();
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+
+                background: rgba($bg, .88);
+
+                opacity: 0;
+                transition: .35s;
+
+                p {
+                    position: absolute;
+                    top: 10%;
+                    font-weight: bold;
+                    font-size: 17px;
+                }
+
+                .badges-wrap {
+                    @include flex($jc: center);
+                    flex-wrap: wrap;
+                    gap: .5rem;
+                }
+
+                .genre-badge {
+                    display: inline-block;
+                    background: rgba($primary, .12);
+                    border: 1px solid rgba($primary, .5);
+                    color: $text;
+                    font-size: .7rem;
+                    font-weight: 600;
+                    letter-spacing: .06em;
+                    text-transform: uppercase;
+                    padding: .35rem .9rem;
+                    border-radius: 999px;
+
+                    transform: scale(0);
+                    transition: .35s;
+
+                    &:hover {
+                        background: rgba($primary, .3);
+                        box-shadow: 0 0 15px rgba($primary, .4);
+                    }
+                }
+            }
+
+            &:hover {
+                img {
+                    transform: scale(1.1);
+                }
+
+                .genres {
+                    opacity: 1;
+
+                    .genre-badge {
+
+                        @for $i from 1 through 8 {
+                            &:nth-child(#{$i}) {
+                                transition-delay: .05s * $i;
+                                transform: scale(1);
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <!--CSS Plugins -->
+    <link rel="stylesheet" href="CSS/plugins/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/plugins/all.min.css">
+    <!--CSS Main -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!--JS Plugins -->
+    <script src="JS/plugins/bootstrap.min.js"></script>
+    <script src="JS/plugins/jquery.js"></script>
+    <script src="JS/plugins/wow.js"></script>
+    <script src="JS/src/abstracts/variables.js" defer></script>
+    <script src="JS/src/abstracts/function.js" defer></script>
+    <script src="JS/src/service/movie.api.js" defer></script>
+    <!--JS Main -->
+    <script src="JS/src/search.js" defer></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">MovieDB</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item me-0 mb-2 me-lg-3">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item me-0 mb-2 me-lg-3">
+                        <a class="nav-link" href="index.html#Latest">Latest</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#Featured">Featured</a>
+                    </li>
+                </ul>
+                <form class="d-flex mx-auto" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="Search">
+                    <button class="btn" type="submit" id="SearchBtn">Search</button>
+                    <ul class="list-group p-0 m-0" id="SearchResults">
+                    </ul>
+                </form>
+                <ul class="list-unstyled d-flex mb-0">
+                    <li class="me-3 watchlist-icon">
+                        <i class="fa-solid fa-bookmark" id="WatchListBtn"></i>
+                        <p class="d-none count-w">0</p>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <i class="fa-solid fa-user dropdown-toggle " data-bs-toggle="dropdown"></i>
+                            <ul class="dropdown-menu">
+
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <section id="SearchSection" class="py-5">
+
+        <div class="container mt-5">
+            <h1 class="text-center mb-5">
+                Search Results for:
+                <span class="text-danger" id="SearchQuery"></span>
+            </h1>
+            <div class="row" id="SearchResultsPage"></div>
+        </div>
+    </section>
+
+
+    <div class="popup" id="MovieDetails">
+        <div class="box rounded-2">
+
+        </div>
+    </div>
+
+    <div class="popup" id="WatchList">
+        <div class="box rounded-2">
+
+        </div>
+    </div>
+
+
+    <div class="popup" id="Registeration">
+        <div class="box rounded-4 p-4">
+            <div class="head mb-4 text-center">
+                <h3 class="title"></h3>
+                <i class="fa-regular fa-circle-xmark mainColor" onclick="closePopup()"></i>
+            </div>
+            <div class="body">
+                <form id="RegisterForm">
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

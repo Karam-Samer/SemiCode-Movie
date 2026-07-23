@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie</title>
+    <!--CSS Plugins -->
+    <link rel="stylesheet" href="CSS/plugins/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/plugins/all.min.css">
+    <link rel="stylesheet" href="./css/plugins/animate.css">
+    <link rel="stylesheet" href="./css/plugins/swiper.css">
+    <!--CSS Main -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!--JS Plugins -->
+    <script src="JS/plugins/jquery.js" defer></script>
+    <script src="JS/plugins/bootstrap.min.js" defer></script>
+    <script src="JS/plugins/wow.js" defer></script>
+    <script src="JS/plugins/swiper.js" defer></script>
+    <!--JS Main -->
+    <script src="JS/src/abstracts/variables.js" defer></script>
+    <script src="JS/src/abstracts/function.js" defer></script>
+    <script src="JS/src/service/users.js" defer></script>
+    <script src="JS/src/service/movie.api.js" defer></script>
+    <script src="JS/src/index.js" defer></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">MovieDB</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#Home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Latest">Latest</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Featured">Featured</a>
+                    </li>
+                </ul>
+                <form class="d-flex mx-auto" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="Search">
+                    <button class="btn" type="submit" id="SearchBtn">Search</button>
+                    <ul class="list-group p-0 m-0" id="SearchResults">
+                    </ul>
+                </form>
+                <ul class="list-unstyled d-flex mb-0">
+                    <li class="me-3 watchlist-icon">
+                        <i class="fa-solid fa-bookmark" id="WatchListBtn"></i>
+                        <p class="d-none count-w">0</p>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <i class="fa-solid fa-user dropdown-toggle " data-bs-toggle="dropdown"></i>
+                            <ul class="dropdown-menu">
+
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="container">
+            <div class="content">
+
+                <span class="first-line py-2 px-3">
+                    <i class="fa-solid fa-clapperboard me-2"></i> The Ultimate Movie Experience
+                </span>
+
+                <h1 class="wow animate__bounceInDown" data-wow-delay="0.5s">
+                    Welcome to
+                    <span>MovieDB</span>
+                </h1>
+
+                <h2 class="wow animate__bounceInUp " data-wow-delay="1s">
+                    Discover Movies, Actors & TV Shows
+                </h2>
+
+                <p class="wow animate__fadeInUp" data-wow-delay="1.5s">
+                    Explore thousands of movies, ratings, trailers, cast,
+                    genres and discover your next favorite film.
+                </p>
+
+                <div class="buttons gap-3">
+                    <a class="btn button first btn-primary wow animate__fadeInLeft" data-wow-delay="2s"
+                        href="#Movies">Explore
+                        Movies</a>
+                    <a class="btn button second btn-outline-light wow animate__fadeInRight" data-wow-delay="2.5s"
+                        href="#Trending">Trending</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="Trending">
+        <div class="container">
+            <div class="title">
+                <h2 class="h2Title">Trending Movies</h2>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="Movies">
+        <div class="container">
+            <div class="content">
+                <div class="title">
+                    <h2 class="h2Title">Movies</h2>
+                </div>
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <!-- Function -->
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="popup" id="MovieDetails">
+        <div class="box rounded-2">
+
+        </div>
+    </div>
+
+    <div class="popup" id="WatchList">
+        <div class="box rounded-2">
+
+        </div>
+    </div>
+
+
+    <div class="popup" id="Registeration">
+        <div class="box rounded-4 p-4">
+            <div class="head mb-4 text-center">
+                <h3 class="title"></h3>
+                <button class="close-btn" onclick="closePopup()">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+            </div>
+            <div class="body">
+                <form id="RegisterForm">
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

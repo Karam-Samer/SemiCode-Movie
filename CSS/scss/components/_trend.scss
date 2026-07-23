@@ -1,0 +1,50 @@
+@use '../abstracts/' as *;
+
+
+#Trending {
+    .swiper {
+        padding: 20px 10px 50px;
+    }
+
+    .swiper-slide {
+        height: auto;
+    }
+
+    .trending-card {
+        overflow: hidden;
+        border-radius: 15px;
+        background: $surface;
+        transition: .3s;
+        cursor: pointer;
+
+
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            transition: .3s;
+        }
+
+        &:hover {
+            transform: translateY(-8px);
+            img {
+                transform: scale(1.1);
+            }
+        }
+
+        &-info {
+            padding: 15px;
+
+            h6 {
+                color: $text;
+                margin-bottom: 8px;
+            }
+
+            p {
+                color: $secondary;
+                margin: 0;
+                font-size: 14px;
+            }
+        }
+    }
+}

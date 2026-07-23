@@ -1,0 +1,136 @@
+@use '../abstracts/' as *;
+
+
+#hero {
+    position: relative;
+    min-height: 100vh;
+
+    @include flex();
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(rgba($bg, .85),
+            rgba($bg, .95)),
+        url("../Images/Hero.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+
+        background: rgba($bg, .5);
+    }
+
+    .container {
+        position: relative;
+
+
+        .content {
+
+            max-width: 700px;
+            margin: auto;
+            text-align: center;
+
+            .first-line {
+                display: inline-block;
+                border-radius: 50px;
+                background: rgba($primary, .15);
+                border: 1px solid rgba($primary, .35);
+                color: $hover;
+                margin-bottom: 1.5rem;
+                font-size: .9rem;
+            }
+
+            h1 {
+                color: $text;
+                font-size: clamp(3rem, 6vw, 5rem);
+                font-weight: bold;
+
+                span {
+                    color: $primary;
+
+                    animation: glow 2s infinite alternate;
+
+                }
+            }
+
+            h2 {
+                color: $secondary;
+
+                font-size: 1.7rem;
+
+                margin: 1.5rem 0;
+            }
+
+            p {
+
+                color: $secondary;
+
+                font-size: 1.1rem;
+
+                line-height: 1.9;
+
+                margin-bottom: 2rem;
+            }
+
+            .buttons {
+
+                @include flex();
+
+                gap: 1rem;
+
+                flex-wrap: wrap;
+
+                .button {
+
+                    padding: .9rem 2rem;
+
+                    border-radius: 50px;
+
+                    font-weight: 600;
+
+                    transition: .3s;
+                }
+
+                .first {
+
+                    background: $primary;
+
+                    border-color: $primary;
+
+                    &:hover {
+
+                        background: $hover;
+
+                        border-color: $hover;
+
+                        transform: translateY(-5px);
+
+                        box-shadow: 0 10px 30px rgba($primary, .4);
+                    }
+                }
+
+                .second {
+
+                    color: $text;
+
+                    border: 1px solid rgba($text, .3);
+
+                    &:hover {
+
+                        background: $text;
+
+                        color: $bg;
+
+                        transform: translateY(-5px);
+                    }
+                }
+            } 
+        }
+    }
+}

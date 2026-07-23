@@ -1,0 +1,80 @@
+@mixin respond($breakpoint) {
+    @if ($breakpoint ==350) {
+        @media (max-width: 1300px) {
+            @content;
+        }
+    }
+
+    @else if ($breakpoint ==450) {
+        @media (min-width: 371px) and (max-width: 1300px) {
+            @content;
+        }
+    }
+
+    @else if ($breakpoint ==650) {
+        @media (min-width: 577px) and (max-width: 1300px) {
+            @content;
+        }
+    }
+
+    @else if ($breakpoint ==850) {
+        @media (min-width: 769px) and (max-width: 1300px) {
+            @content;
+        }
+    }
+
+    @else if ($breakpoint ==1050) {
+        @media (min-width: 992px) and (max-width: 1300px) {
+            @content;
+        }
+    }
+
+    @else if ($breakpoint ==1200) {
+        @media (min-width: 1181px) and (max-width: 1300px) {
+            @content;
+        }
+    }
+}
+
+@mixin createEle($w: 100%, $h: auto) {
+    content: "";
+    display: block;
+    width: $w;
+    height: $h;
+}
+
+@mixin position($p: absolute, $t: initial, $r: initial, $b: initial, $l: initial) {
+    position: $p;
+    top: $t;
+    right: $r;
+    bottom: $b;
+    left: $l;
+}
+
+@mixin flex($al: center, $jc: center, $dir: row) {
+    display: flex;
+    flex-direction: $dir;
+    align-items: $al;
+    justify-content: $jc;
+}
+
+@mixin distance($w: 100%, $h: initial) {
+    width: $w;
+    height: $h;
+}
+
+@mixin backgroundImg($img, $s: cover, $p: center, $r: no-repeat) {
+    background-image: url($img);
+    background-size: $s;
+    background-position: $p;
+    background-repeat: $r;
+}
+
+@mixin card-animation($cols, $animations, $important: false) {
+    @for $i from 1 through length($animations) {
+
+        &:nth-child(#{$cols}n + #{$i}) {
+            animation: #{nth($animations, $i)} #{if($important, '!important', '')};
+        }
+    }
+}
