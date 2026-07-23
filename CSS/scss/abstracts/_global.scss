@@ -149,20 +149,24 @@ body {
     }
 }
 
-section,
-.popup {
-    background: $bg;
+section {
+    padding: 80px 0;
 
-    .title {
-        @include flex();
+    &,
+    .popup {
+        background: $bg;
 
-        .h2Title {
-            color: $text;
-            margin-bottom: 2rem;
-            font-weight: bold;
-            background: linear-gradient(to right, $primary, $secondary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .title {
+            @include flex();
+
+            .h2Title {
+                color: $text;
+                margin-bottom: 2rem;
+                font-weight: bold;
+                background: linear-gradient(to right, $primary, $secondary);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
         }
     }
 }
