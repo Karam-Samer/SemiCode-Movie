@@ -560,7 +560,7 @@ nav.navbar form button {
   transform: translateY(-8px);
 }
 #Trending .trending-card:hover img {
-  transform: scale(1.1);
+  transform: scale(1.3);
 }
 #Trending .trending-card-info {
   padding: 15px;

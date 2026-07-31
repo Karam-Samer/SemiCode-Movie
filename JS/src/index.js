@@ -227,10 +227,11 @@ trendingMovies((response) => {
         <div class="swiper-slide">
             <div class="trending-card"
                 onclick="fillPopup(${index},'Trending')">
-                
+                <div class="overflow-hidden">
                 <img src="${movie.poster_path
             ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
             : "images/no-image.png"}">
+            </div>
                 <div class="trending-card-info">
                     <h6 class="m-0">
                         ${titleHandler(movie.title)}
@@ -244,7 +245,7 @@ trendingMovies((response) => {
 
     `).join("");
 
-    var swiper = new Swiper(".mySwiper", {
+    let swiper = new Swiper(".mySwiper", {
         slidesPerView: 5,
         spaceBetween: 20,
         loop: true,
@@ -252,7 +253,8 @@ trendingMovies((response) => {
 
         autoplay: {
             delay: 500,
-            disableOnInteraction: true,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
         },
 
         breakpoints: {
