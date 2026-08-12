@@ -35,3 +35,7 @@ const MoviesALL = {
         Email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
         Password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
     };
+
+let searchInput = $("#Search"),
+    searchBtn = $("#SearchBtn"),
+    searchResults = $("#SearchResults");

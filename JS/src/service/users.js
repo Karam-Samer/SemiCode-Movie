@@ -18,29 +18,71 @@ $("#RegisterForm").on("submit", function (e) {
             confirmPassword = $("#ConfirmPassword").val().trim();
 
         if (!Regex.UserName.test(user.UserName))
-            return alert("Invalid UserName");
+            return swal.fire({
+                icon: "warning",
+                title: "UserName must be 3-20 characters long and contain only letters and numbers.",
+                showConfirmButton: false,
+                timer: 1500,
+                theme: "dark",
+            });
 
         if (!Regex.Email.test(user.Email))
-            return alert("Invalid Email");
+            return swal.fire({
+                icon: "warning",
+                title: "Invalid Email",
+                showConfirmButton: false,
+                timer: 1500,
+                theme: "dark",
+            });
 
         if (!Regex.Password.test(user.Password))
-            return alert("Password must contain at least 8 characters, one letter and one number.");
+            return swal.fire({
+                icon: "warning",
+                title: "Password must contain at least 8 characters, one letter and one number.",
+                showConfirmButton: false,
+                timer: 1500,
+                theme: "dark",
+            });
 
         if (user.Password !== confirmPassword)
-            return alert("Passwords do not match.");
+            return swal.fire({
+                icon: "warning",
+                title: "Passwords do not match.",
+                showConfirmButton: false,
+                timer: 1500,
+                theme: "dark",
+            });
 
         if (users.some(u => u.Email === user.Email))
-            return alert("Email already exists.");
+            return swal.fire({
+                icon: "warning",
+                title: "Email already exists.",
+                showConfirmButton: false,
+                timer: 1500,
+                theme: "dark",
+            });
 
         if (users.some(u => u.UserName === user.UserName))
-            return alert("UserName already exists.");
+            return swal.fire({
+                icon: "warning",
+                title: "UserName already exists.",
+                showConfirmButton: false,
+                timer: 1500,
+                theme: "dark",
+            });
 
         users.push(user);
 
         saveUsers(users);
         saveCurrentUser(user);
 
-        alert(`Welcome ${user.UserName}`);
+        swal.fire({
+            icon: "success",
+            title: `Welcome ${user.UserName}`,
+            showConfirmButton: false,
+            timer: 1500,
+            theme: "dark",
+        });
 
         closePopup();
         updateUserMenu();
@@ -61,11 +103,23 @@ $("#RegisterForm").on("submit", function (e) {
         );
 
     if (!user)
-        return alert("Wrong UserName or Password");
+        return swal.fire({
+            icon: "warning",
+            title: "Wrong UserName or Password",
+            showConfirmButton: false,
+            timer: 1500,
+            theme: "dark",
+        }); Z
 
     saveCurrentUser(user);
 
-    alert(`Welcome ${user.UserName}`);
+    swal.fire({
+        icon: "success",
+        title: `Welcome ${user.UserName}`,
+        showConfirmButton: false,
+        timer: 1500,
+        theme: "dark",
+    });
 
     closePopup();
     updateUserMenu();

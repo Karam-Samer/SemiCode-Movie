@@ -10,10 +10,7 @@ let GenresUl = document.querySelector("#Movies .nav-pills"),
     MoviesContainer = document.querySelector("#Movies .tab-content"),
     Genres = ["Action", "Comedy", "Horror", "Romance", "Crime"],
     GenresNames = [28, 35, 27, 10749, 80],
-    NumberOfPages = {},
-    searchInput = $("#Search"),
-    searchBtn = $("#SearchBtn"),
-    searchResults = $("#SearchResults");
+    NumberOfPages = {};
 
 
 // ================= User =================
@@ -188,7 +185,13 @@ searchBtn.on("click", function (e) {
 
     if (!value) {
 
-        alert("Please enter a search query.");
+        swal.fire({
+            icon: "warning",
+            title: "Please enter a search term.",
+            showConfirmButton: false,
+            timer: 1500,
+            theme: "dark",
+        });
         return;
 
     }
@@ -204,7 +207,25 @@ $("#WatchListBtn").on("click", function () {
 
     if (!currentUser()) {
 
-        alert("Please Login First.");
+        swal.fire({
+            icon: "warning",
+            title: "Please log in to view your watchlist.",
+            showConfirmButton: true,
+            showCancelButton: true,
+            showCloseButton: true,
+            confirmButtonText: "Log In",
+            cancelButtonText: "Register",
+            theme: "dark",
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+                openPopup("Login");
+            }
+            else if (result.isDismissed) {
+                openPopup("Register");
+            }
+
+        });
         return;
 
     }
@@ -277,3 +298,4 @@ trendingMovies((response) => {
     });
 
 });
+

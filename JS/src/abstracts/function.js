@@ -334,7 +334,23 @@ function saveWatchList(list) {
     let user = currentUser();
 
     if (!user) {
-        alert("Please Login First");
+        swal.fire({
+            icon: "warning",
+            title: "Please log in to manage your watchlist.",
+            showConfirmButton: true,
+            showCancelButton: true,
+            showCloseButton: true,
+            confirmButtonText: "Log In",
+            cancelButtonText: "Register",
+            theme: "dark",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                openPopup("Login");
+            }
+            else if (result.isDismissed) {
+                openPopup("Register");
+            }
+        });
         return false;
     }
 
@@ -476,7 +492,23 @@ function toggleWatchList(index, genre) {
     let user = currentUser();
 
     if (!user) {
-        alert("Please Login First");
+        swal.fire({
+            icon: "warning",
+            title: "Please log in to manage your watchlist.",
+            showConfirmButton: true,
+            showCancelButton: true,
+            showCloseButton: true,
+            confirmButtonText: "Log In",
+            cancelButtonText: "Register",
+            theme: "dark",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                openPopup("Login");
+            }
+            else if (result.isDismissed) {
+                openPopup("Register");
+            }
+        });
         return;
     }
 
