@@ -45,6 +45,8 @@ for (let i = 0; i < Genres.length; i++) {
 
 // ================= Movies =================
 
+let loadedGenres = 0;
+
 for (let i = 0; i < Genres.length; i++) {
   fetchMovies(GenresNames[i], 1, (response) => {
     let Movies = response.results;
@@ -66,7 +68,11 @@ for (let i = 0; i < Genres.length; i++) {
         `;
 
     ChangeButtonWatchList();
-    completeHeroCarousel();
+
+    loadedGenres++;
+    if (loadedGenres === Genres.length) {
+      completeHeroCarousel();
+    }
   });
 }
 
@@ -190,7 +196,7 @@ function completeHeroCarousel() {
   const randomMovies = allMovies
     .filter((movie) => movie.backdrop_path)
     .sort(() => Math.random() - 0.5)
-    .slice(0, 10);
+    .slice(0, 15);
   carousel.html(
     randomMovies
       .map(
@@ -210,42 +216,27 @@ function completeHeroCarousel() {
   let swiper = new Swiper(".carousalKA", {
     slidesPerView: 5,
     spaceBetween: 20,
+    slidesPerGroup: 1,
+    loopedSlides: 5,
     loop: true,
-    grabCursor: true,
+    grabCursor: false,
+    allowTouchMove: false,
 
     autoplay: {
       delay: 2000,
       disableOnInteraction: false,
-      pauseOnMouseEnter: true,
-    },
-
-    breakpoints: {
-      0: {
-        slidesPerView: 1,
-      },
-      576: {
-        slidesPerView: 2,
-      },
-      768: {
-        slidesPerView: 3,
-      },
-      992: {
-        slidesPerView: 4,
-      },
-      1200: {
-        slidesPerView: 5,
-      },
+      pauseOnMouseEnter: false,
     },
     on: {
-      transitionEnd: function () {
+      slideChangeTransitionEnd: function () {
         let activeIndex = this.realIndex,
           movie = randomMovies[activeIndex],
           $image = $("#hero .hero-transition-image"),
-          $activeCard = $(this.slides[this.activeIndex]).find(
-            ".image-container img",
+          $activeContainer = $(this.slides[this.activeIndex]).find(
+            ".image-container"
           );
 
-        let rect = $activeCard[0].getBoundingClientRect();
+        let rect = $activeContainer[0].getBoundingClientRect();
         let heroRect = $("#hero")[0].getBoundingClientRect();
 
         $image
@@ -258,6 +249,7 @@ function completeHeroCarousel() {
           })
           .removeClass("active");
 
+        void $image[0].offsetWidth;
 
         $image.addClass("active");
 
@@ -270,8 +262,11 @@ function completeHeroCarousel() {
               `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
             )
             .removeClass("hero-bg-animation");
+            
+          void $heroBg[0].offsetWidth;
 
           $heroBg.addClass("hero-bg-animation");
+          $image.attr("src", "");
         }, 700);
       },
     },
