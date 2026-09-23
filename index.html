@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CineVerse</title>
+    <!--Icon-->
+    <link rel="icon" href="favicon.jpg" type="image/jpeg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!--CSS Plugins -->
+    <link rel="stylesheet" href="CSS/plugins/bootstrap.min.css" />
+    <link rel="stylesheet" href="CSS/plugins/all.min.css" />
+    <link rel="stylesheet" href="CSS/plugins/animate.css" />
+    <link rel="stylesheet" href="CSS/plugins/swiper.css" />
+    <!--CSS Main -->
+    <link rel="stylesheet" href="CSS/style.css" />
+    <!--JS Plugins -->
+    <script src="JS/plugins/sweetalert.js" defer></script>
+    <script src="JS/plugins/jquery.js" defer></script>
+    <script src="JS/plugins/bootstrap.min.js" defer></script>
+    <script src="JS/plugins/wow.js" defer></script>
+    <script src="JS/plugins/swiper.js" defer></script>
+    <!--JS Main -->
+    <script src="JS/src/abstracts/variables.js" defer></script>
+    <script src="JS/src/abstracts/function.js" defer></script>
+    <script src="JS/src/service/users.js" defer></script>
+    <script src="JS/src/service/movie.api.js" defer></script>
+    <script src="JS/src/search.js" defer></script>
+    <script src="JS/src/index.js" defer></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <i class="fa-solid fa-clapperboard"></i> Cine<span>Verse</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link fw-bold active"
+                aria-current="page"
+                href="#hero"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="#Trending">Trending</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="#Movies">Movies</a>
+            </li>
+          </ul>
+          <form class="d-flex mx-auto" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              id="Search"
+            />
+            <button class="btn" type="submit" id="SearchBtn">Search</button>
+            <ul class="list-group p-0 m-0" id="SearchResults"></ul>
+          </form>
+          <ul class="list-unstyled d-flex align-items-center mb-0">
+            <li class="me-3 watchlist-icon">
+              <i class="fa-solid fa-bookmark" id="WatchListBtn"></i>
+              <p class="d-none count-w fw-bold">0</p>
+            </li>
+            <li>
+              <div class="dropdown">
+                <i
+                  class="fa-solid fa-user dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                ></i>
+                <ul class="dropdown-menu dropdown-menu-end p-2"></ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section id="hero">
+      <div class="hero-bg"></div>
+      <img class="hero-transition-image" src="" alt="" />
+      <div class="container">
+        <div class="row">
+          <div class="col-12 content text-start">
+            <h1
+              class="movie-text wow animate__bounceInDown"
+              data-wow-delay="0.2s"
+            >
+              Welcome to
+              <span class="movie-primary">CineVerse</span>
+            </h1>
+
+            <h2
+              class="h3 movie-secondary wow animate__bounceInUp my-3"
+              data-wow-delay="0.4s"
+            >
+              Discover Movies, Actors & TV Shows
+            </h2>
+
+            <p
+              class="lead movie-secondary wow animate__fadeInUp mb-4"
+              data-wow-delay="0.6s"
+            >
+              Explore thousands of movies, ratings, trailers, cast, genres and
+              discover your next favorite film.
+            </p>
+
+            <div class="buttons d-flex justify-content-start gap-3 flex-wrap">
+              <a
+                class="btn button first btn-primary rounded-pill fw-bold wow animate__fadeInLeft"
+                data-wow-delay="0.8s"
+                href="#Movies"
+              >
+                Explore Movies
+              </a>
+
+              <a
+                class="btn button second btn-outline-light rounded-pill fw-bold wow animate__fadeInRight"
+                data-wow-delay="1s"
+                href="#Trending"
+              >
+                Trending
+              </a>
+            </div>
+          </div>
+
+          <div class="d-none d-lg-block col-lg-8 movieCarousal">
+            <div class="carousalKA swiper">
+              <div class="carousalKA-inner swiper-wrapper"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="Trending">
+      <div class="container">
+        <div class="title">
+          <h2 class="h2Title">Trending Movies</h2>
+        </div>
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="Movies">
+      <div class="container">
+        <div class="content">
+          <div class="title">
+            <h2 class="h2Title">Movies</h2>
+          </div>
+          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <!-- Function -->
+          </ul>
+          <div class="tab-content" id="pills-tabContent"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="popup" id="MovieDetails">
+      <div class="box rounded-4"></div>
+    </div>
+
+    <div class="popup" id="WatchList">
+      <div class="box rounded-4"></div>
+    </div>
+
+    <div class="popup" id="Registeration">
+      <div class="box rounded-4 p-4">
+        <div class="head mb-4 text-center">
+          <h3 class="title fw-bold movie-text"></h3>
+          <button class="close-btn rounded-circle" onclick="closePopup()">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="body">
+          <form id="RegisterForm"></form>
+        </div>
+      </div>
+    </div>
+    <div class="popup" id="SearchResultsPopup">
+      <div class="box rounded-4 p-4">
+        <button class="close-btn rounded-circle" onclick="closePopup()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="title mb-4">
+          <h2 class="h2Title">
+            Search Results for:
+            <span class="movie-primary" id="SearchQuery"></span>
+          </h2>
+        </div>
+        <div class="row" id="SearchResultsPage"></div>
+      </div>
+    </div>
+
+    <!-- Movie Cinema Popup Loader -->
+    <div class="popup" id="Loader">
+      <div class="box rounded-4 text-center p-4 gap-3">
+        <div class="reel rounded-circle">
+          <span class="rounded-circle"></span>
+          <span class="rounded-circle"></span>
+          <span class="rounded-circle"></span>
+          <span class="rounded-circle"></span>
+          <span class="rounded-circle"></span>
+          <span class="rounded-circle"></span>
+          <div class="center rounded-circle">
+            <i class="fa-solid fa-play small"></i>
+          </div>
+        </div>
+
+        <h3 class="title fw-bold fs-4 m-0 movie-text">
+          <i class="fa-solid fa-clapperboard me-2 movie-primary"></i>Cine<span
+            >Verse</span
+          >
+        </h3>
+
+        <div class="progress rounded-pill">
+          <div class="bar rounded-pill"></div>
+        </div>
+
+        <div class="dots d-flex gap-2">
+          <span class="rounded-circle"></span>
+          <span class="rounded-circle"></span>
+          <span class="rounded-circle"></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,282 @@
+@use '../abstracts/' as *;
+
+nav.navbar {
+    position: fixed;
+    top: 15px;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+
+    .container {
+        border-radius: 50px;
+        background: rgba($surface, .3);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba($primary, .2);
+        box-shadow: 0 8px 16px #0000001a;
+        padding: 8px 24px;
+
+        @include respond(350) {
+            width: 94%;
+            padding: 8px 16px;
+            border-radius: 25px;
+        }
+
+        @include respond(1050) {
+            width: 100%;
+            padding: 8px 24px;
+            border-radius: 50px;
+        }
+
+        .navbar-brand {
+            width: clamp(100px, 10vw, 150px);
+            font-size: clamp(20px, 2.2vw, 24px);
+            color: $primary;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+
+            i {
+                font-size: clamp(20px, 2.2vw, 24px);
+                color: $primary;
+                animation: glow 2s infinite alternate;
+            }
+
+            span {
+                background: $primary-gradient;
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+
+        .navbar-toggler {
+            @include distance(40px, 35px);
+            border: 1px solid $primary;
+            border-radius: 8px;
+            padding: 0;
+
+            display: none;
+
+            @include respond(350) {
+                @include flex();
+            }
+
+            @include respond(1050) {
+                display: none;
+            }
+
+            i {
+                color: $primary;
+            }
+
+            &:focus {
+                box-shadow: none;
+            }
+        }
+
+        @include respond(350) {
+            .navbar-collapse {
+                padding: 16px;
+                background: rgba($surface, 0.96);
+                backdrop-filter: blur(15px);
+                border: 1px solid rgba($primary, 0.25);
+                border-radius: 20px;
+                margin-top: 12px;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+
+                .navbar-nav {
+                    flex-direction: column;
+                    width: 100%;
+                    gap: 8px;
+
+                    li.nav-item {
+                        width: 100%;
+                        text-align: center;
+
+                        .nav-link {
+                            width: 100%;
+                            padding: 10px 16px;
+                        }
+                    }
+                }
+
+                ul {
+                    width: 100%;
+                    margin-top: 12px;
+                }
+            }
+        }
+
+        @include respond(1050) {
+            .navbar-collapse {
+                background: transparent;
+                backdrop-filter: none;
+                padding: 0;
+                border: none;
+                box-shadow: none;
+                margin-top: 0;
+
+                .navbar-nav {
+                    flex-direction: row;
+                    width: auto;
+                    gap: 6px;
+
+                    li.nav-item {
+                        width: auto;
+
+                        .nav-link {
+                            width: auto;
+                            padding: 8px 22px;
+                        }
+                    }
+                }
+
+                ul {
+                    width: auto;
+                    margin-top: 0;
+                }
+            }
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-link {
+            font-size: clamp(13px, 1.1vw, 15px);
+            letter-spacing: 0.5px;
+            color: $secondary;
+            padding: 8px 22px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-block;
+
+            &:hover {
+                color: #fff !important;
+                background-color: rgba(255, 255, 255, 0.06);
+            }
+
+            &.active {
+                color: #fff !important;
+                background: #172554;
+                border: 1px solid rgba($primary, 0.3);
+                box-shadow: 0 0 20px rgba($primary, 0.4);
+            }
+        }
+
+        i {
+            transition-duration: .5s;
+            cursor: pointer;
+            color: $secondary;
+
+            &:hover {
+                color: $primary;
+            }
+        }
+    }
+
+    .watchlist-icon {
+        position: relative;
+
+        #WatchListBtn {
+            @include distance(38px, 38px);
+            @include flex();
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 50%;
+            color: $text;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: $primary;
+                border-color: $primary;
+                color: #fff;
+                box-shadow: 0 0 12px rgba($primary, 0.5);
+                transform: translateY(-2px);
+            }
+        }
+
+        .count-w {
+            @include flex();
+            @include position(absolute, -6px, -6px);
+            min-width: 18px;
+            height: 18px;
+            padding: 0 6px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #ff5a5f, #ff1744);
+            color: #fff;
+            font-size: 11px;
+            line-height: 1;
+            box-shadow: 0 0 10px rgba(#ff1744, 0.5);
+            user-select: none;
+            animation: pulse 0.8s ease;
+            pointer-events: none;
+            z-index: 10;
+        }
+    }
+
+    .dropdown {
+        position: relative;
+
+        .dropdown-toggle {
+            @include distance(38px, 38px);
+            @include flex();
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 50%;
+            color: $text;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &::after {
+                display: none;
+            }
+
+            &:hover,
+            &.show {
+                background-color: $primary;
+                border-color: $primary;
+                color: #fff;
+                box-shadow: 0 0 12px rgba($primary, 0.5);
+                transform: translateY(-2px);
+            }
+        }
+
+        .dropdown-menu {
+            background: rgba($surface, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba($primary, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            margin-top: 10px;
+
+            .dropdown-item-text {
+                font-size: 14px;
+                color: $text;
+            }
+
+            .dropdown-divider {
+                border-color: rgba($primary, 0.2);
+            }
+
+            .dropdown-item {
+                font-size: 14px;
+                color: $secondary;
+                border-radius: 8px;
+                transition: 0.2s;
+
+                &:hover {
+                    background: rgba($primary, 0.2);
+                    color: #fff;
+                }
+            }
+        }
+    }
+}

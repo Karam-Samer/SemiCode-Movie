@@ -1,0 +1,197 @@
+@use '../abstracts/' as *;
+
+
+.card-container {
+    @include flex();
+
+    @include respond(350) {
+        animation: zoomIn .8s ease !important;
+    }
+
+    @include respond(650) {
+        @include card-animation(2,
+            (slideInLeft .8s ease, slideInRight .8s ease),
+            true);
+    }
+
+    @include respond(850) {
+        @include card-animation(3,
+            (slideInLeft 1s ease,
+                zoomIn .8s ease,
+                slideInRight 1s ease),
+            true);
+    }
+
+    @include respond(1200) {
+        @include card-animation(4,
+            (slideInLeft 1s ease,
+                zoomIn .8s ease,
+                zoomIn .8s ease,
+                slideInRight 1s ease),
+            true);
+    }
+
+    @include card-animation(4,
+        (slideInLeft 1s ease,
+            zoomIn .8s ease,
+            zoomIn .8s ease,
+            slideInRight 1s ease));
+
+    .card {
+        background: $surface;
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all .35s ease;
+
+        &:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .55), 0 0 25px rgba($primary, .25);
+        }
+
+        .card-body {
+            background: $surface;
+
+            .card-title {
+                font-size: clamp(15px, 1.4vw, 17px);
+            }
+        }
+
+        .card-text {
+            font-size: clamp(13px, 1.1vw, 14px);
+
+            .description {
+                font-size: clamp(13px, 1.1vw, 14px);
+                display: inline-block;
+                cursor: pointer;
+                transition: .3s;
+
+                &:hover {
+                    color: $hover;
+                }
+            }
+        }
+
+        .btn-card-action {
+            width: 100%;
+            border-radius: 50px;
+            background: $primary;
+            color: $text;
+            border: none;
+            font-size: clamp(13px, 1.1vw, 14px);
+            transition: all 0.3s ease;
+            @include flex();
+
+            &:hover {
+                background: $hover;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 18px rgba($primary, 0.4);
+                color: $text;
+            }
+
+            &.is-added {
+                background: #dc2626;
+
+                &:hover {
+                    background: #b91c1c;
+                    box-shadow: 0 6px 18px rgba(220, 38, 38, 0.4);
+                    color: $text;
+                }
+            }
+        }
+
+        .poster {
+            position: relative;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                transition: .35s;
+            }
+
+            .genres {
+                position: absolute;
+                inset: 0;
+                border-radius: inherit;
+
+                @include flex();
+                flex-direction: column;
+
+                background: rgba($bg, .88);
+
+                opacity: 0;
+                transition: .35s;
+
+                p {
+                    position: absolute;
+                    top: 10%;
+                    font-size: clamp(16px, 1.6vw, 18px);
+                }
+
+                .badges-wrap {
+                    @include flex($jc: center);
+                    flex-wrap: wrap;
+                    gap: 8px;
+                }
+
+                .genre-badge {
+                    display: inline-block;
+                    background: rgba($primary, .12);
+                    border: 1px solid rgba($primary, .5);
+                    color: $text;
+                    font-size: 11px;
+                    letter-spacing: .06em;
+                    text-transform: uppercase;
+                    border-radius: 999px;
+
+                    transform: scale(0);
+                    transition: .35s;
+
+                    &:hover {
+                        background: rgba($primary, .3);
+                        box-shadow: 0 0 15px rgba($primary, .4);
+                    }
+                }
+
+                .btn-card-more {
+                    font-size: clamp(13px, 1.1vw, 14px);
+                    border-radius: 50px;
+                    background: rgba($primary, 0.85);
+                    backdrop-filter: blur(6px);
+                    color: $text;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    transition: all 0.3s ease;
+
+                    &:hover {
+                        background: $primary;
+                        transform: scale(1.05);
+                        box-shadow: 0 0 15px rgba($primary, 0.5);
+                        color: $text;
+                    }
+                }
+            }
+
+            &:hover {
+                img {
+                    transform: scale(1.1);
+                }
+
+                .genres {
+                    opacity: 1;
+
+                    .genre-badge {
+
+                        @for $i from 1 through 8 {
+                            &:nth-child(#{$i}) {
+                                transition-delay: .05s * $i;
+                                transform: scale(1);
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,48 @@
+@use '../abstracts/' as *;
+
+#Movies {
+    background: $bg;
+
+    .container {
+        #pills-tab {
+            @include flex();
+
+            @include respond(350) {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
+            }
+
+            @include respond(650) {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-link {
+                font-size: clamp(13px, 1.1vw, 15px);
+                background: transparent;
+                color: $secondary;
+                border: 1px solid rgba($primary, .25);
+                transition: .3s;
+
+                &:hover,
+                &.active {
+                    background: $primary;
+                    color: $text;
+                    border-color: $primary;
+                }
+            }
+        }
+
+        .pagination {
+            @include flex();
+
+            .page-link {
+                font-size: clamp(13px, 1.1vw, 14px);
+                background: rgba($surface, .5);
+                border: 1px solid rgba($primary, .25);
+                color: $text;
+            }
+        }
+    }
+}

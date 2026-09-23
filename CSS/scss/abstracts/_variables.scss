@@ -1,0 +1,28 @@
+    $bg: #080B13;
+    $surface: #0F172A;
+    $surface-light: #172238;
+    $primary: #3B82F6;
+    $primary-gradient: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+    $hover: #60A5FA;
+    $accent-purple: #8B5CF6;
+    $accent-red: #EF4444;
+    $accent-gold: #F59E0B;
+    $text: #F8FAFC;
+    $secondary: #94A3B8;
+
+
+    $font-main: 'Outfit', sans-serif;
+
+    $movie-colors: (
+        "primary": $primary,
+        "text": $text,
+        "secondary": $secondary,
+        "gold": $accent-gold,
+        "red": $accent-red,
+    );
+
+    @each $name, $color in $movie-colors {
+        .movie-#{$name} {
+            color: $color !important;
+        }
+    }

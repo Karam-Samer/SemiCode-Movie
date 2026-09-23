@@ -1,0 +1,85 @@
+@use "../abstracts" as *;
+
+#Loader {
+  background: $bg;
+  z-index: 99999;
+
+  .box {
+    @include flex($dir: column);
+    width: min(360px, 90%);
+
+    .reel {
+      @include distance(85px, 85px);
+      @include flex();
+      position: relative;
+      border: 3px solid rgba($primary, 0.3);
+      background: $surface-light;
+      box-shadow: 0 0 25px rgba($primary, 0.35);
+      animation: spin 2.5s linear infinite;
+
+      span {
+        @include distance(11px, 11px);
+        @include position(absolute, $t: 50%, $l: 50%);
+        background: $bg;
+
+        @for $i from 1 through 6 {
+          &:nth-child(#{$i}) {
+            transform: translate(-50%, -50%)
+              rotate(#{$i * 60}deg)
+              translateY(-28px);
+          }
+        }
+      }
+
+      .center {
+        @include distance(35px, 35px);
+        @include flex();
+        background: $primary-gradient;
+        z-index: 2;
+
+        i {
+          margin-left: 2px;
+        }
+      }
+    }
+
+    .title {
+      font-size: clamp(20px, 2.5vw, 24px);
+
+      i {
+        color: $primary;
+      }
+
+      span {
+        background: $primary-gradient;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .progress {
+      @include distance(180px, 4px);
+      background: rgba(255, 255, 255, 0.1);
+
+      .bar {
+        @include distance(0, 100%);
+        background: $primary;
+        box-shadow: 0 0 10px $primary;
+        animation: moveBar 1.5s ease-in-out infinite;
+      }
+    }
+
+    .dots span {
+      @include distance(6px, 6px);
+      background: $primary;
+      animation: blink 1.2s infinite ease-in-out both;
+
+      @for $i from 1 through 3 {
+        &:nth-child(#{$i}) {
+          animation-delay: ($i - 1) * 0.2s;
+      }
+      }
+    }
+  }
+}
